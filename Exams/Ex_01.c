@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+const char* evenPositions[] = {
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"
+};
+
+
+const char* oddPositions[] = {
+    "!", "#", "/", "~", "=", "'", "\\", ">", ".", ","
+};
+
 char* encodeString(const char* input) {
     int length = strlen(input);
 
@@ -12,25 +22,21 @@ char* encodeString(const char* input) {
         char c = input[i];
 
         if (i % 2 == 0) {
-            encoded[j++] = 'A' + (c - '0');
+            int digit = c - '0';
+            if (digit >= 0 && digit <= 9) {
+                
+                strcat(encoded, evenPositions[digit]);
+                j += strlen(evenPositions[digit]);
+            }
         } else { 
-            switch (c) {
-                case '0': encoded[j++] = '!'; break;
-                case '1': encoded[j++] = '#'; break;
-                case '2': encoded[j++] = '/'; break;
-                case '3': encoded[j++] = '~'; break;
-                case '4': encoded[j++] = '='; break;
-                case '5': encoded[j++] = '\''; break;
-                case '6': encoded[j++] = '\\'; break;
-                case '7': encoded[j++] = '>'; break;
-                case '8': encoded[j++] = '.'; break;
-                case '9': encoded[j++] = ','; break;
+            int digit = c - '0';
+            if (digit >= 0 && digit <= 9) {
+
+                strcat(encoded, oddPositions[digit]);
+                j += strlen(oddPositions[digit]);
             }
         }
     }
-
-    
-    encoded[j] = '\0';
 
     return encoded;
 }
