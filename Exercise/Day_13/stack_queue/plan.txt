@@ -1,0 +1,17 @@
+linked_list:
+push_front = "fast"
+push_back="fast"
+pop_front="fast"
+
+pop_back="slow"
+Stack:
+N1--->N2----->N3---->N4---->N5
+
+Push_front and pop_front = fast
+
+
+Queue:
+
+Enqueue:push_back;
+Dequeue:pop_front
+
